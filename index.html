@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro:300" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./assets/styles/stylesheet.css">
+    <title>Pokédex</title>
+</head>
+<body>
+
+    <div class="loader" id="loader" style="display: none;">
+        <img src="./assets/images/loader.gif" alt="Fetching data">
+    </div>
+
+    <div class="container">
+
+        <h1>Pokédex</h1>
+
+        <script type="text/javascript" src="lib/serialize-0.2.min.js"></script>
+        <form enctype="multipart/form-data" action="index.html" method="POST" id="search-form">
+            <input type="search" name="search" placeholder="Search">
+            <button type="submit"><img src="./assets/images/search.png" alt="Search"></button>
+        </form>
+
+        <div class="main-info">
+            <img id="pokemon-sprite" src="" alt="">
+            
+            <div class="name-number">
+                <h2 id="pokemon-name"></h2>
+                <h2 id="pokemon-number"></h2>
+            </div>
+            
+            <div class="types">
+                <p class="pokemon-type"></p>
+                <p class="pokemon-type"></p>
+            </div>
+        </div>
+
+        <div class="pokemon-abilities" id="pokemon-abilities" style="display: none;">
+            <h3>Abilities</h3>
+        </div>
+
+        <div class="pokemon-stats" id="pokemon-stats" style="opacity: 0;">
+            <ul>
+                <li>spe</li>
+                <li>spdef</li>
+                <li>spatk</li>
+                <li>def</li>
+                <li>atk</li>
+                <li>hp</li>
+            </ul>
+
+            <div class="stat-bars">
+                <div class="stat-bar">
+                    <div class="spe"></div>&nbsp;<span class="spe-value"></span>
+                </div>
+                <div class="stat-bar">
+                    <div class="spdef"></div>&nbsp;<span class="spdef-value"></span>
+                </div>
+                <div class="stat-bar">
+                    <div class="spatk"></div>&nbsp;<span class="spatk-value"></span>
+                </div>
+                <div class="stat-bar">
+                    <div class="def"></div>&nbsp;<span class="def-value"></span>
+                </div>
+                <div class="stat-bar">
+                    <div class="atk"></div>&nbsp;<span class="atk-value"></span>
+                </div>
+                <div class="stat-bar">
+                    <div class="hp"></div>&nbsp;<span class="hp-value"></span>
+                </div>
+            </div>
+            
+        </div>
+
+    </div> <!-- container -->
+
+    <script src="dist/index.js"></script>
+</body>
+</html>
