@@ -47,12 +47,18 @@ var searchPokemon = function searchPokemon(url, callback) {
     };
 };
 
-var searchTypes = function searchTypes(url, callback) {
-    ajaxRequest(url, callback);
+// This function takes an array of URLs
+var searchTypesMulti = function searchTypesMulti(url, callback) {
+    for (var i = 0; i < url.length; ++i) {
+        ajaxRequest(url[i], function (data) {
+            callback(data); // doesn't work yet
+        });
+    }
+    return typeData;
 };
 
 exports.searchPokemon = searchPokemon;
-exports.searchTypes = searchTypes;
+exports.searchTypesMulti = searchTypesMulti;
 
 },{}],2:[function(require,module,exports){
 'use strict';
@@ -158,13 +164,9 @@ var appendHtml = function appendHtml(data) {
     for (var _i4 = 0; _i4 < data.types.length; ++_i4) {
         typeUrls.push(data.types['' + _i4].type["url"]);
     }
-    var typeEffectiveness = function typeEffectiveness(typeData) {
-        console.log(typeData);
-    };
-    typeUrls.forEach(function (e) {
-        (0, _data.searchTypes)(e.toString(), function (data) {
-            typeEffectiveness(data);
-        });
+    var typeEffectiveness = function typeEffectiveness(typeData) {};
+    (0, _data.searchTypesMulti)(typeUrls, function (data) {
+        typeEffectiveness(data);
     });
 
     // Pokemon stats

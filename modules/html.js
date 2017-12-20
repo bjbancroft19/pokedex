@@ -1,4 +1,4 @@
-import { searchTypes } from './data';
+import { searchTypesMulti } from './data';
 
 const capitalise = (string) => {
     const capitalised = string[0].toUpperCase() + (string).substring(1);
@@ -96,12 +96,10 @@ const appendHtml = (data) => {
         typeUrls.push(data.types[`${i}`].type["url"]);
     }
     const typeEffectiveness = (typeData) => {
-        console.log(typeData);
+        
     }
-    typeUrls.forEach(e => {
-        searchTypes(e.toString(), data => {
-            typeEffectiveness(data);
-        });
+    searchTypesMulti(typeUrls, data => {
+        typeEffectiveness(data);
     });
     
 
