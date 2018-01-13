@@ -47,18 +47,7 @@ var searchPokemon = function searchPokemon(url, callback) {
     };
 };
 
-// This function takes an array of URLs
-var searchTypesMulti = function searchTypesMulti(url, callback) {
-    for (var i = 0; i < url.length; ++i) {
-        ajaxRequest(url[i], function (data) {
-            callback(data); // doesn't work yet
-        });
-    }
-    return typeData;
-};
-
 exports.searchPokemon = searchPokemon;
-exports.searchTypesMulti = searchTypesMulti;
 
 },{}],2:[function(require,module,exports){
 'use strict';
@@ -66,9 +55,6 @@ exports.searchTypesMulti = searchTypesMulti;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.appendHtml = undefined;
-
-var _data = require('./data');
 
 var capitalise = function capitalise(string) {
     var capitalised = string[0].toUpperCase() + string.substring(1);
@@ -159,31 +145,21 @@ var appendHtml = function appendHtml(data) {
         }
     }
 
-    // Type effectiveness
-    var typeUrls = [];
-    for (var _i4 = 0; _i4 < data.types.length; ++_i4) {
-        typeUrls.push(data.types['' + _i4].type["url"]);
-    }
-    var typeEffectiveness = function typeEffectiveness(typeData) {};
-    (0, _data.searchTypesMulti)(typeUrls, function (data) {
-        typeEffectiveness(data);
-    });
-
     // Pokemon stats
     var statsContainer = document.querySelector('#pokemon-stats');
     statsContainer.style.opacity = "1";
     var statsDiv = Array.from(document.querySelectorAll('.stat-bar div'));
     var statsValues = Array.from(document.querySelectorAll('.stat-bar span'));
-    for (var _i5 = 0; _i5 < statsDiv.length; ++_i5) {
-        var stat = data.stats['' + _i5].base_stat;
-        statsDiv[_i5].style.width = stat + 'px';
-        statsValues[_i5].innerHTML = stat;
+    for (var _i4 = 0; _i4 < statsDiv.length; ++_i4) {
+        var stat = data.stats['' + _i4].base_stat;
+        statsDiv[_i4].style.width = stat + 'px';
+        statsValues[_i4].innerHTML = stat;
     }
 };
 
 exports.appendHtml = appendHtml;
 
-},{"./data":1}],3:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 'use strict';
 
 require('normalize-css');

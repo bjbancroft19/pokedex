@@ -1,4 +1,3 @@
-import { searchTypesMulti } from './data';
 
 const capitalise = (string) => {
     const capitalised = string[0].toUpperCase() + (string).substring(1);
@@ -89,19 +88,6 @@ const appendHtml = (data) => {
             element.innerHTML = capitalise(ability);
         }
     }
-
-    // Type effectiveness
-    const typeUrls = [];
-    for (let i = 0; i < data.types.length; ++i) {
-        typeUrls.push(data.types[`${i}`].type["url"]);
-    }
-    const typeEffectiveness = (typeData) => {
-        
-    }
-    searchTypesMulti(typeUrls, data => {
-        typeEffectiveness(data);
-    });
-    
 
     // Pokemon stats
     const statsContainer = document.querySelector('#pokemon-stats');

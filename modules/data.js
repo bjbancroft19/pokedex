@@ -41,14 +41,4 @@ const searchPokemon = (url, callback) => {
     }
 }
 
-// This function takes an array of URLs
-const searchTypesMulti = (url, callback) => {
-    for (let i = 0; i < url.length; ++i) {
-        ajaxRequest(url[i], data => {
-            callback(data); // doesn't work yet
-        });
-    }
-    return typeData;
-}
-
-export { searchPokemon, searchTypesMulti }
+export { searchPokemon }
